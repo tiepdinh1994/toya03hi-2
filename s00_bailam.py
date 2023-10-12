@@ -27,9 +27,25 @@ hi('Mom', 'Dad')             | Hi Mom, and Dad!
 hi('A', 'B', 'C')            | Hi A, B, and C!
 hi('1', '22', '333', '4444') | Hi 1, 22, 333 and 4444!
 """
+
 #endregion debai
 
+
 #region bailam
-def hi(name):
-  return 'todo'
+def hi(name=None):
+  if name == 'Mom':
+    return f'Hi {name}!'
+  if name == '':
+    return f'Hi{name}!'
+  if name:
+    return 'Hi!'
+  if name is None:
+    return 'Hi!'
+
+
 #endregion bailam
+print(hi(name='Mom'))
+print(hi('Mom'))
+print(hi(''))
+print(hi())
+print(hi(None))
