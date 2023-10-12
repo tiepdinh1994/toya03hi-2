@@ -32,18 +32,25 @@ hi('1', '22', '333', '4444') | Hi 1, 22, 333 and 4444!
 
 
 #region bailam
-def hi(name=None):
-  if not name:
-    return 'Hi!'
-  if name is None:
-    return 'Hi!'
-  else:
+def hi(*args, **kwargs):
+  if len(args) > 1:
+    name_list = args
+    s = ', '.join(name_list[:-1])
+    s2 = name_list[-1]
+    return f'Hi {s}, and {s2}!'
+  elif len(args) <= 1 or len(kwargs) > 0:
+    name = args[0] if len(args) > 0 else None
+    if len(kwargs) > 0:
+      name = kwargs['name']
+    if name == '' or name is None:
+      return 'Hi!'
     return f'Hi {name}!'
 
 
 #endregion bailam
-print(hi(name='Mom'))
 print(hi('Mom'))
-print(hi(''))
 print(hi())
 print(hi(None))
+print(hi('Mom', 'Dad'))
+print(hi('A', 'B', 'C'))
+print(hi('1', '22', '333', '4444'))
